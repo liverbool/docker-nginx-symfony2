@@ -1,6 +1,6 @@
 FROM nginx
 
-RUN nginx stop
+RUN nginx -s stop
 #CMD ["nginx", "-g", "daemon off;"]
 
 COPY default.conf /etc/nginx/conf.d/default.conf
