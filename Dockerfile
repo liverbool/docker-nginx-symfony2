@@ -9,4 +9,6 @@ ENV SF_FAST_CGI 127.0.0.0:9000
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
+VOLUME ["/var/www"]
+
 CMD ["nginx", "-g", "daemon off;"]
