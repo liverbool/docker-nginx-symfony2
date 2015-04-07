@@ -9,9 +9,12 @@ ENV SF_FAST_CGI_IP 127.0.0.0
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
-RUN sed -e "s/SF_DOMAIN/${SF_DOMAIN}/" -i /etc/nginx/conf.d/default.conf
-RUN sed -e "s/SF_WEB_ROOT/${SF_WEB_ROOT}/" -i /etc/nginx/conf.d/default.conf
-RUN sed -e "s/SF_FAST_CGI_IP/${SF_FAST_CGI_IP}/" -i /etc/nginx/conf.d/default.conf
+#RUN sed -e "s/SF_DOMAIN/${SF_DOMAIN}/" -i /etc/nginx/conf.d/default.conf
+#RUN sed -e "s/SF_WEB_ROOT/${SF_WEB_ROOT}/" -i /etc/nginx/conf.d/default.conf
+#RUN sed -e "s/SF_FAST_CGI_IP/${SF_FAST_CGI_IP}/" -i /etc/nginx/conf.d/default.conf
+RUN sed -e 's/SF_DOMAIN/$ENV{"SF_DOMAIN"}/' -i /etc/nginx/conf.d/default.conf
+RUN sed -e 's/SF_WEB_ROOT/$ENV{"SF_WEB_ROOT"}/' -i /etc/nginx/conf.d/default.conf
+RUN sed -e 's/SF_FAST_CGI_IP/$ENV{"SF_FAST_CGI_IP"}/' -i /etc/nginx/conf.d/default.conf
 RUN cat /etc/nginx/conf.d/default.conf
 
 RUN mkdir /var/www
