@@ -9,8 +9,8 @@ ENV SF_FAST_CGI 127.0.0.0:9000
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
-mkdir /var/www
-chown -R www-data:www-data /var/www
+RUN mkdir /var/www
+RUN chown -R www-data:www-data /var/www
 
 VOLUME ["/var/www"]
 
